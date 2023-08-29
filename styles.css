@@ -1,3 +1,7 @@
+body{
+    background: linear-gradient(90deg, #fffde7, #fff8e2, #fff2df, #ffeddf, #ffe8e1, #ffe3e5, #ffe0ea, #ffddf0);
+}
+
 .container{
     margin-top: 10%;
 }
@@ -5,4 +9,14 @@
 .grid{
     display: flex;
     justify-content: center;
+    /* background-color: white; */
+}
+
+.title{
+    text-align: center;
+}
+
+.grid-size-selector-container{
+    text-align: center;
+    margin-bottom: 20px;
 }

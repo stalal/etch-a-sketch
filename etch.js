@@ -1,5 +1,6 @@
 buildGrid(20);
 addColor();
+showGridSize();
 
 function buildGrid(gridSize){
 
@@ -54,3 +55,15 @@ function addColor(){
         });
     });
 }
+
+function showGridSize(){
+    let currentGridSize = document.getElementById("grid-size-selector");
+    let gridSize = document.querySelector(".grid-size");
+
+    currentGridSize.addEventListener("input", function(){
+       const currentValue = currentGridSize.value;
+       gridSize.textContent = currentValue;
+    });
+
+}
+
