@@ -1,4 +1,6 @@
-
+// Features to add
+// Ask user for grid size
+// Allow user to 
 
 buildGrid(20);
 
@@ -15,30 +17,30 @@ function buildGrid(gridSize){
 
     for(let i=0; i<gridSize; i++){
         
-        const row = document.createElement("div");
-        row.classList.add("row");
-        row.style.display = "flex";
-        row.style.flexDirection = "column";
+        const gridColumn = document.createElement("div");
+        gridColumn.classList.add("gridColumn");
+        gridColumn.style.display = "flex";
+        gridColumn.style.flexDirection = "column";
 
         for(let j=0; j<gridSize; j++){
-            const div = document.createElement("div");
+            const cell = document.createElement("div");
             
-            div.style.border = "1px solid black";
-            div.style.height = gridHeight;
-            div.style.width = gridWidth;
-            div.classList.add("gridSquare");
-            row.appendChild(div);
+            cell.style.border = "1px solid black";
+            cell.style.height = gridHeight;
+            cell.style.width = gridWidth;
+            cell.classList.add("gridSquare");
+            gridColumn.appendChild(cell);
         }
         
-        container.appendChild(row);
+        container.appendChild(gridColumn);
     }
 
-    const divs = document.querySelectorAll(".gridSquare");
+    const cells = document.querySelectorAll(".gridSquare");
 
-    divs.forEach((div) => {
-        div.addEventListener("mouseenter", () => {
+    cells.forEach((cell) => {
+        cell.addEventListener("mouseenter", () => {
             let randomColor = Math.floor(Math.random()*16777215).toString(16);
-            div.style.backgroundColor = "#" + randomColor;
+            cell.style.backgroundColor = "#" + randomColor;
         });
     });
     
