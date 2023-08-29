@@ -1,5 +1,8 @@
 .container{
-    height: 500px;
-    width: 500px;
+    margin-top: 10%;
+}
+
+.grid{
     display: flex;
+    justify-content: center;
 }
