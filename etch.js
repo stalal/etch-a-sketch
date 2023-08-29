@@ -1,17 +1,25 @@
-buildGrid(20);
-addColor();
-showGridSize();
+let slider = document.getElementById("grid-size-selector");
+let gridSizeForUser = document.querySelector(".grid-size");
+let grid = document.querySelector(".grid");
+
+buildGrid(25); // Default value of grid on page load
+buildDynamicGrid(); // Then we call this function to make sure it regenerates based on slider value
 
 function buildGrid(gridSize){
 
-    // Selecting the grid and finding its width
-    const grid = document.querySelector(".grid");
-    const gridWidth = grid.offsetWidth;
+    // Remove existing grid elements
+    // This is so that when the slider value changes, we can make a new grid
+    grid.innerHTML = ''; 
 
-    // Then we calculate how much our cell sizes will need to be for filling up 50% of the grid
-    // and having the required number of cells
+    // Set a width for the grid
+    const gridWidth = 400;
 
-    let cellSize = gridWidth*0.3/gridSize;
+    // Then we calculate how much our cell sizes will need to be to fit into the grid
+    // Found out through troubleshooting that the actual cell size was 2 px bigger than the calculated
+    // cell size because of the 1 px solid border. So subtracted that from the cell size to make sure
+    // higher cell sizes didn't mean the overall grid would overflow.  
+
+    let cellSize = gridWidth/gridSize - 2;
     
     cellSize = cellSize + "px";
     
@@ -42,6 +50,7 @@ function buildGrid(gridSize){
         grid.appendChild(gridColumn);
     }
     
+    addColor(); // Add the ability to draw whenever we regenerate the grid
 }
 
 function addColor(){
@@ -56,13 +65,11 @@ function addColor(){
     });
 }
 
-function showGridSize(){
-    let currentGridSize = document.getElementById("grid-size-selector");
-    let gridSize = document.querySelector(".grid-size");
-
-    currentGridSize.addEventListener("input", function(){
-       const currentValue = currentGridSize.value;
-       gridSize.textContent = currentValue;
+function buildDynamicGrid(){
+    slider.addEventListener("input", function(){
+       const sliderValue = slider.value;
+       gridSizeForUser.textContent = sliderValue;
+       buildGrid(parseInt(sliderValue));
     });
 
 }
